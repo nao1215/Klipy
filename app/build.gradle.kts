@@ -11,7 +11,7 @@ repositories {
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("com.google.guava:guava:30.1.1-jre")
+    implementation("com.google.guava:guava:31.1-jre")
     implementation("com.github.kwhat:jnativehook:2.2.2")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
