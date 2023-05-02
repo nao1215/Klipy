@@ -6,6 +6,7 @@ package com.github.nao1215.Klipy
 import com.github.kwhat.jnativehook.GlobalScreen
 import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent
 import com.github.kwhat.jnativehook.keyboard.NativeKeyListener
+import com.github.nao1215.Klipy.database.DatabaseManager
 import java.awt.Toolkit
 import java.awt.datatransfer.DataFlavor
 import java.awt.datatransfer.Transferable
@@ -25,14 +26,19 @@ fun main() {
 
 class CustomKeyListener : NativeKeyListener {
     override fun nativeKeyPressed(e: NativeKeyEvent) {
-        println("key press")
         if (e.keyCode == NativeKeyEvent.VC_C && e.modifiers and NativeKeyEvent.CTRL_MASK != 0) {
             println("Ctrl-C")
             val clipboard = Toolkit.getDefaultToolkit().systemClipboard
             val transferable: Transferable = clipboard.getContents(null)
             if (transferable.isDataFlavorSupported(DataFlavor.stringFlavor)) {
                 val text = transferable.getTransferData(DataFlavor.stringFlavor) as String
-                println(text)
+                DatabaseManager.addClipBoard(text)
+            }
+        } else if (e.keyCode == NativeKeyEvent.VC_D && e.modifiers and NativeKeyEvent.CTRL_MASK != 0
+        ) {
+            val clipBoards = DatabaseManager.getClipBoards()
+            for (board in clipBoards) {
+                println("${board.id}, ${board.content}")
             }
         }
     }
