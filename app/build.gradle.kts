@@ -16,7 +16,7 @@ dependencies {
     implementation("com.google.guava:guava:31.1-jre")
     implementation("com.github.kwhat:jnativehook:2.2.2")
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
-    implementation("org.jetbrains.exposed:exposed-core:0.31.1")
+    implementation("org.jetbrains.exposed:exposed-core:0.41.1")
     implementation("org.jetbrains.exposed:exposed-jdbc:0.31.1")
     implementation("org.xerial:sqlite-jdbc:3.36.0.1")
     implementation("org.jetbrains.kotlinx:kotlinx-cli:0.3.5")
