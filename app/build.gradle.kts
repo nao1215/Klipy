@@ -33,9 +33,17 @@ tasks.named<Jar>("jar") {
     manifest {
         attributes["Main-Class"] = application.mainClass.get()
     }
-    from(sourceSets.main.get().output)
     archiveFileName.set("klipy")
     destinationDirectory.set(file("build/libs"))
+
+    // To avoid the duplicate handling strategy error
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    // To add all of the dependencies
+    from(sourceSets.main.get().output)
+    dependsOn(configurations.runtimeClasspath)
+    from({
+        configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
+    })
 }
 
 tasks {
