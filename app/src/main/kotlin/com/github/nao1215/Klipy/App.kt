@@ -10,6 +10,7 @@ import com.github.nao1215.Klipy.database.DatabaseManager
 import java.awt.Toolkit
 import java.awt.datatransfer.DataFlavor
 import java.awt.datatransfer.Transferable
+import kotlinx.cli.*
 
 class App {
     val greeting: String
@@ -18,7 +19,35 @@ class App {
         }
 }
 
-fun main() {
+fun main(args: Array<String>) {
+    val parser = ArgParser("klipy")
+    val isDaemon by
+            parser.option(
+                            ArgType.Boolean,
+                            fullName = "daemon",
+                            shortName = "d",
+                            description = "Enable daemon mode"
+                    )
+                    .default(false)
+
+    val output by
+            parser.option(
+                            ArgType.Boolean,
+                            fullName = "output",
+                            shortName = "o",
+                            description = "Output clipboard content"
+                    )
+                    .default(false)
+
+    parser.parse(args)
+
+    if (isDaemon) {
+        println("daemon")
+    }
+    if (output) {
+        println("output")
+    }
+
     println(App().greeting)
     GlobalScreen.registerNativeHook()
     GlobalScreen.addNativeKeyListener(CustomKeyListener())
