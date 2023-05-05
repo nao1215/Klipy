@@ -1,1 +1,1 @@
-# Klipy - CLI/GUI toolsets for manipulating the clipboard
+# Klipy - CLI/GUI toolsets for the clipboard
