@@ -8,9 +8,9 @@ object Clipboard {
         val clipboard = Toolkit.getDefaultToolkit().systemClipboard
         val selection = StringSelection(content)
         clipboard.setContents(selection, selection)
-        while (clipboard.isDataFlavorAvailable(DataFlavor.stringFlavor)) {
-            Thread.sleep(10)
-        }
+
+        // TODO: wait for clipboard update.
+        Thread.sleep(1000, 0)
     }
 
     fun read(): String {

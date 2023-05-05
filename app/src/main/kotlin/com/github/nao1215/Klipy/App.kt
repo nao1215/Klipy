@@ -19,7 +19,6 @@ class App {
 }
 
 fun main(args: Array<String>) {
-
     val argParser = ArgumentParser()
     argParser.parse(args)
 
@@ -27,19 +26,22 @@ fun main(args: Array<String>) {
         println("daemon mode")
         GlobalScreen.registerNativeHook()
         GlobalScreen.addNativeKeyListener(CustomKeyListener())
+        return
     } else if (argParser.output) {
-        println("output mode")
+        println(Clipboard.read())
+        return
     } else {
-        println("copy input data to clipboard")
         if (System.`in`.available() <= 0) {
-            println("no input. exit")
+            println("no input data. please see --help. exit")
             return
         }
         val input = generateSequence(::readLine).joinToString("\n")
+        println("copy $input to clipboard")
         Clipboard.write(input)
     }
 }
 
+// TODO: For daemon mode.
 class CustomKeyListener : NativeKeyListener {
     override fun nativeKeyPressed(e: NativeKeyEvent) {
         if (e.keyCode == NativeKeyEvent.VC_C && e.modifiers and NativeKeyEvent.CTRL_MASK != 0) {
