@@ -1,2 +1,1 @@
-# Klipy
-Klipy - Clipboard extension app for Linux in Kotlin
+# Klipy - CLI/GUI toolsets for manipulating the clipboard

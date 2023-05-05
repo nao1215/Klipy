@@ -11,6 +11,7 @@ object Clipboard {
         while (clipboard.isDataFlavorAvailable(DataFlavor.stringFlavor)) {
             Thread.sleep(10)
         }
+    }
 
     fun read(): String {
         val clipboard = Toolkit.getDefaultToolkit().systemClipboard
