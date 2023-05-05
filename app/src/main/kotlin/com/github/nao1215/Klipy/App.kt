@@ -36,7 +36,7 @@ fun main(args: Array<String>) {
             return
         }
         val input = generateSequence(::readLine).joinToString("\n")
-        println("copy $input to clipboard")
+        println("copy '$input' to clipboard")
         Clipboard.write(input)
     }
 }
