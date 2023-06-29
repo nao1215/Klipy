@@ -14,7 +14,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("com.google.guava:guava:32.0.0-jre")
+    implementation("com.google.guava:guava:32.1.0-jre")
     implementation("com.github.kwhat:jnativehook:2.2.2")
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("org.jetbrains.exposed:exposed-core:0.41.1")
